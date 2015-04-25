@@ -1,0 +1,22 @@
+{
+  "name": "xp-pressed-state",
+  "license": "BSD-3-Clause",
+  "version": "0.8.0",
+  "description": "This component is used to add press capabilities on the context element",
+  "authors": [
+    "Giuliano Rullo <g.rullo@expandjs.com>",
+    "Maurizio Stefàno <m.stefano@expandjs.com>",
+    "Robert Manolea <r.manolea@expandjs.com>"
+  ],
+  "main": [
+    "xp-pressed-state.html"
+  ],
+  "keywords": [
+    "web-components"
+  ],
+  "dependencies": {
+    "expandjs": "ExpandJS/expandjs",
+    "xp-targeter": "ExpandJS/xp-targeter",
+    "polymer": "Polymer/polymer#^0.5"
+  }
+}
