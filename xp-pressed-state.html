@@ -7,13 +7,13 @@ The complete set of contributors may be found at https://expandjs.github.io/CONT
 -->
 
 <!--
-This component is used to add press capabilities on the context element.
+This element is used to add press capabilities on the context element.
 It extends the native html `template`.
 
-@component xp-pressed-state
-@description This component is used to add press capabilities on the context element
+@element xp-pressed-state
+@description This element is used to add press capabilities on the context element
 @extends template
-@mixin xp-targeter http://www.expandjs.com/components/xp-targeter
+@mixin xp-targeter http://www.expandjs.com/elements/xp-targeter
 
 @dependency polymer Polymer/polymer#^0.5
 @dependency expandjs ExpandJS/expandjs
@@ -27,7 +27,7 @@ It extends the native html `template`.
 <polymer-element name="xp-pressed-state" extends="template" attributes="active context disabled invokes pressed target toggleable">
 
     <script>
-        XPComponent({
+        XPElement({
 
             // MIXINS
             mixins: ['xp-targeter'],
