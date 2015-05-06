@@ -174,8 +174,8 @@ It extends the native html `template`.
             contextChanged: function (pre, post) {
                 var self = this;
                 if (arguments.length < 2) { return; }
-                if (pre) { XP.unlisten(pre, {click: self.handleClickBinded, down: self.handleDownBinded, up: self.handleUpBinded}); }
-                if (post) { XP.listen(post, {click: self.handleClickBinded, down: self.handleDownBinded, up: self.handleUpBinded}); }
+                if (pre) { XP.unlisten(pre, {click: self.handleClickBound, down: self.handleDownBound, up: self.handleUpBound}); }
+                if (post) { XP.listen(post, {click: self.handleClickBound, down: self.handleDownBound, up: self.handleUpBound}); }
             },
 
             // OBSERVER
@@ -188,9 +188,9 @@ It extends the native html `template`.
             // LISTENER
             ready: function () {
                 var self = this;
-                self.handleClickBinded = self.handleClick.bind(self);
-                self.handleDownBinded  = self.handleDown.bind(self);
-                self.handleUpBinded    = self.handleUp.bind(self);
+                self.handleClickBound = self.handleClick.bind(self);
+                self.handleDownBound  = self.handleDown.bind(self);
+                self.handleUpBound    = self.handleUp.bind(self);
             },
 
             /*********************************************************************/
