@@ -174,9 +174,7 @@ It extends the native html `template`.
 
             // HANDLER
             handleClick: function (event) {
-                var self = this;
-                if (self.disabled) { XP.stop(event); return; }
-                XP.delay(function () { return !event.defaultPrevented && self.press(); });
+                return this.disabled ? XP.stop(event) : this.press();
             },
 
             // HANDLER
