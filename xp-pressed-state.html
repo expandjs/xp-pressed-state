@@ -26,7 +26,7 @@ It extends the native html `template`.
 <link rel="import" href="../expandjs/expandjs.html">
 <link rel="import" href="../xp-targeter/xp-targeter.html">
 
-<polymer-element name="xp-pressed-state" extends="template" attributes="active context disabled invokes pressed target toggleable">
+<polymer-element name="xp-pressed-state" extends="template" attributes="active context disabled pressed target toggleable">
 
     <script>
         XPElement({
@@ -51,7 +51,6 @@ It extends the native html `template`.
              * @event xp-activate
              * @param {Element} firer
              * @param {Element} target
-             * @param {string} invokes
              * @param {boolean} isActive
              * @bubbles
              * @cancelable
@@ -66,22 +65,9 @@ It extends the native html `template`.
              * @returns {Element}
              */
             press: function () {
-
-                // Vars
-                var self    = this,
-                    found   = self.findTarget(),
-                    target  = found && XP.isFunction(found[self.invokes]) ? found : null,
-                    invokes = target ? self.invokes : null;
-
-                // Firing
-                if (XP.isPrevented(self.context.fire('xp-activate', {firer: self.context, target: target, invokes: invokes, isActive: self.active}))) { return self; }
-
-                // Setting
+                var self = this, target = self.findTarget();
+                if (XP.isPrevented(self.context.fire('xp-activate', {firer: self.context, target: target, isActive: self.active}))) { return self; }
                 if (self.toggleable) { self.active = !self.active; }
-
-                // Invoking
-                if (target) { target[invokes](self.context); }
-
                 return self;
             },
 
@@ -115,15 +101,6 @@ It extends the native html `template`.
                  * @default false
                  */
                 disabled: {reflect: true, value: false},
-
-                /**
-                 * The target's method to invoke on press.
-                 *
-                 * @attribute invokes
-                 * @type string
-                 * @default "toggle"
-                 */
-                invokes: {reflect: true, value: 'toggle'},
 
                 /**
                  * If set to true, the element is pressed.
@@ -199,7 +176,7 @@ It extends the native html `template`.
             handleClick: function (event) {
                 var self = this;
                 if (self.disabled) { XP.stop(event); return; }
-                XP.delay(function () { if (!event.defaultPrevented) { self.press(); } });
+                XP.requestAnimationFrame(function () { return !event.defaultPrevented && self.press(); });
             },
 
             // HANDLER
