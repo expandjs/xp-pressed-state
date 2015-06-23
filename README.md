@@ -1,3 +1,3 @@
 # xp-pressed-state
 
-See the [`documentation page`](http://expandjs.com/elements/xp-pressed-state) for more information.
+This repository **is deprected**. Use [`xp-pressed-behavior`](https://github.com/expandjs/xp-pressed-behavior) instead.
